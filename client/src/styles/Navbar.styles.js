@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.nav`
 width: 100%;
-height: 80px;
+height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
 background-color: var(--near-black);
 `;
 
@@ -48,34 +48,30 @@ margin: 10px;
   }
 `;
 
-// export const StyledLogoutButton = styled.a`
-// display: inline-block;
-// background-color: var(--green);
-// color: var(--white);
-// border-radius: var(--border-radius-pill);
-// font-weight: 700;
-// font-size: var(--fz-lg);
-// padding: var(--spacing-sm) var(--spacing-xl);
+export const StyledLogoutContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
-// &:hover,
-// &:focus {
-//   text-decoration: none;
-//   filter: brightness(1.1);
-// }
-// `;
+export const OpenLinksButton = styled.button`
+width: 70px;
+height: 50;
+background: none;
+cursor: pointer;
 
-// export const StyledLogoutContainer = styled.main`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   height: 20vh;
-// `;
+@media (min-width: 700px) {
+  display: none;
+}
+`;
 
 export const NavbarExtendedContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+background-color: var(--near-black);
 
 @media (min-width: 700px) {
     display: none;
@@ -83,13 +79,11 @@ align-items: center;
 
 `;
 
-
-export const StyledLogoutContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+export const NavbarLinkExtended = styled(Link)`
+  color: var(--white);
+  font-size: x-large;
+  text-decoration: none;
+  margin: 10px;
 `;
 
 export const StyledLogoutButton = styled.button`
@@ -106,4 +100,24 @@ export const StyledLogoutButton = styled.button`
     text-decoration: none;
     filter: brightness(1.1);
   }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
+
+export const ExtendedStyledLogoutButton = styled.button`
+  display: inline-block;
+  background-color: var(--pink);
+  color: var(--white);
+  border-radius: var(--border-radius-pill);
+  font-weight: 700;
+  font-size: var(--fz-lg);
+  padding: var(--spacing-sm) var(--spacing-xl);
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    filter: brightness(1.1);
+  }
+  `;
